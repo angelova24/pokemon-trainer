@@ -2,8 +2,13 @@
   <li *ngFor="let poke of pokemons">
     <fieldset>
       <img [src]="poke.url" [alt]="poke.name" />
-      <p>{{poke.name}}</p>
-      <button (click)="onCollectClick(poke)">Collect</button>
+      <p>{{ poke.name }}</p>
+      <button
+        (click)="onCollectClick(poke)"
+        *ngIf="user.pokemon.indexOf(poke.name) < 0">
+        Collect
+      </button>
+      <p *ngIf="user.pokemon.indexOf(poke.name) > -1">You already have it!</p>
     </fieldset>
   </li>
 </ul>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Pokemon} from 'src/app/models/pokemon.model';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -10,12 +11,14 @@ export class PokemonListComponent{
   @Input() pokemons: Pokemon[] = [];
   @Output() collectPokemon: EventEmitter<Pokemon> = new EventEmitter();
 
+  get user() : User {
+    return JSON.parse(sessionStorage.getItem('user') || '');
+  }
+
   constructor() {}
-  pokemonImage = '';
   
   // After clicking the collect button we show the user that  he has collected the pokemon with given name
   onCollectClick(pokemon: Pokemon) {
-    this.pokemonImage = pokemon.url;
     this.collectPokemon.emit(pokemon);
   }
 }
