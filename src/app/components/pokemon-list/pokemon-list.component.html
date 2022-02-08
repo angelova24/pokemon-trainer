@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let poke of pokemons">
+    <fieldset>
+      <img [src]="poke.url" [alt]="poke.name" />
+      <p>{{poke.name}}</p>
+      <button (click)="onCollectClick(poke)">Collect</button>
+    </fieldset>
+  </li>
+</ul>

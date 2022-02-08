@@ -1,0 +1,28 @@
+<form #loginForm="ngForm" (ngSubmit)="onLoginSubmit(loginForm)">
+  <h3>Please login with your trainer name!</h3>
+  <fieldset class="loginFieldSet">
+    <label for="username"> Trainer:</label>
+    <input class="inputBoxFromForm"
+      type="text"
+      ngModel
+      #username="ngModel"
+      name="username"
+      required
+      minlength="3"
+      placeholder="What's you trainer name?"/>
+      
+    <span
+      id="usernameError"
+      *ngIf="username.invalid && (username.touched || username.dirty)">
+      <span *ngIf="username.errors">
+        <br>
+        <b *ngIf="username.errors['required']">Trainer name is required.</b>
+        
+        <b *ngIf="username.errors['minlength']">Trainer name is too short (min 3).</b>
+        <br>
+      </span>
+      
+    </span>
+  </fieldset>
+  <button class="loginButton" [disabled]="loginForm.invalid"   type="submit">Login</button>
+</form>

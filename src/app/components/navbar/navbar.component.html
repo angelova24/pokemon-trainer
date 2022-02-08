@@ -1,0 +1,8 @@
+<h1 class="pokemonTrainerNavText">Pokemon Trainer</h1>
+<div *ngIf="user">
+  <p>
+    <a class="catalogueSelector" routerLink="/catalogue">Catalogue</a>
+    <a class="profileSelector" routerLink="/trainer">Trainer</a>
+  </p>
+  <button (click)="onLogout()" class="logoutButton">Logout</button>
+</div>

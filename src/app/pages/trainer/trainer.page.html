@@ -1,0 +1,11 @@
+<h2>Welcome, {{user.username}}</h2>
+<p *ngIf="user.pokemon.length == 0">You don't have any pokemons, go in catalog to collect some!</p>
+<ul>
+  <li *ngFor="let poke of userPokemons">
+    <fieldset>
+      <img [src]="poke.url" [alt]="poke.name" />
+      <p>{{poke.name}}</p>
+      <button (click)="onThrowAway(poke)">Throw away</button>
+    </fieldset>
+  </li>
+</ul>
